@@ -214,20 +214,20 @@ class SMMS(object):
                     "help": self.help
                 }
                 result = args.get(sys.argv[1], self.help)()
-                print(result)
+                sys.exit(result)
             except KeyError:
                 result = self.help()
-                print(result)
+                sys.exit(result)
         else:
             if os.path.exists(sys.argv[1]):
                 result = self.upload(sys.argv[1])
-                print(result)
+                sys.exit(result)
             elif sys.argv[1] == "ip_history":
                 result = self.get_history()
-                print(result)
+                sys.exit(result)
             else:
                 result = self.help()
-                print(result)
+                sys.exit(result)
 
 
 def app():
