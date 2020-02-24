@@ -156,7 +156,7 @@ class SMMS(object):
 
         remark = "此次上传无 Authorization，不保证图片时效！"
         if flag:
-            remark = "此次上传携带 Authorization：" + self.auth
+            remark = "Authorization：" + self.auth
         data = item["data"]
         img_url = data["url"]
         items = [
