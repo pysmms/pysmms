@@ -1,4 +1,5 @@
 import os
+import re
 import sys
 import json
 import time
@@ -28,11 +29,21 @@ class SMMS(object):
         处理异常消息
         """
 
-        items = [
-            ["Code", item["code"]],
-            ["Message", item["message"]],
-            ["Request Id", item["RequestId"]]
-        ]
+        if item["code"] == "image_repeated":
+            url = re.findall("Image upload repeated limit, this image exists at: (.*)",
+                             item["message"])[0]
+            items = [
+                ["Code", item["code"]],
+                ["Message", "此图已存在"],
+                ["URL", url],
+                ["Request Id", item["RequestId"]]
+            ]
+        else:
+            items = [
+                ["Code", item["code"]],
+                ["Message", item["message"]],
+                ["Request Id", item["RequestId"]]
+            ]
         table_instance = SingleTable(items, "SM.MS - 异常")
         table_instance.inner_row_border = True
         return table_instance.table
