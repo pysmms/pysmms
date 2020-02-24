@@ -8,7 +8,7 @@ import configparser
 
 import requests
 import pyperclip
-from terminaltables import SingleTable
+from terminaltables import DoubleTable
 
 
 class SMMS(object):
@@ -44,7 +44,7 @@ class SMMS(object):
                 ["Message", item["message"]],
                 ["Request Id", item["RequestId"]]
             ]
-        table_instance = SingleTable(items, "SM.MS - 异常")
+        table_instance = DoubleTable(items, "SM.MS - 异常")
         table_instance.inner_row_border = True
         return table_instance.table
 
@@ -63,7 +63,7 @@ class SMMS(object):
             ["已使用", data["disk_usage"]],
             ["总容量", data["disk_limit"]]
         ]
-        table_instance = SingleTable(items, "SM.MS - 用户资料")
+        table_instance = DoubleTable(items, "SM.MS - 用户资料")
         table_instance.inner_row_border = True
         return table_instance.table
 
@@ -98,7 +98,7 @@ class SMMS(object):
                 ["图片地址", data["url"]],
                 ["删除", data["delete"]],
                 ["-", "-"]])
-        table_instance = SingleTable(items[:-1], "SM.MS - 上传记录")
+        table_instance = DoubleTable(items[:-1], "SM.MS - 上传记录")
         table_instance.inner_row_border = True
         return table_instance.table
 
@@ -133,7 +133,7 @@ class SMMS(object):
                 ["图片地址", data["url"]],
                 ["删除", data["delete"]],
                 ["-", "-"]])
-        table_instance = SingleTable(items[:-1], "SM.MS - 历史上传记录")
+        table_instance = DoubleTable(items[:-1], "SM.MS - 历史上传记录")
         table_instance.inner_row_border = True
         return table_instance.table
 
@@ -165,7 +165,7 @@ class SMMS(object):
             ["删除", data["delete"]],
             ["备注", remark]
         ]
-        table_instance = SingleTable(items, "SM.MS - 上传成功")
+        table_instance = DoubleTable(items, "SM.MS - 上传成功")
         table_instance.inner_row_border = True
         pyperclip.copy(img_url)
         return table_instance.table
