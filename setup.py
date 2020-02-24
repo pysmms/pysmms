@@ -27,7 +27,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'pysmms = pysmms.pysmms:app',
+            'pysmms=pysmms.pysmms:app',
         ],
     }
 )
