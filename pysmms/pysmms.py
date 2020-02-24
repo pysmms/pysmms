@@ -197,7 +197,7 @@ class SMMS(object):
 
     def main(self):
         if len(sys.argv) < 2:
-            print("缺少参数！使用 'pysmms help' 命令查看所有参数。")
+            sys.exit("缺少参数！使用 'pysmms help' 命令查看所有参数。")
 
         pysmms = configparser.ConfigParser()
         _pysmms = pysmms.read(os.path.expanduser('~') + '/.pysmms')
