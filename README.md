@@ -67,3 +67,5 @@ pysmms history
 ```
 
 此历史记录需要配置 Authorization，只可查询最近五条数据。
+
+**[具体开发介绍查看此链接](https://lijianxun.top/274.html)**
