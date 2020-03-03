@@ -1,7 +1,7 @@
 import json
 
 import requests
-from utils import table, table_err, history_url
+from .utils import table, table_err, history_url
 
 
 class IPHistory(object):

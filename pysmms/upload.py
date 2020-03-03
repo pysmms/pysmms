@@ -4,7 +4,7 @@ from random import choice
 
 import requests
 import pyperclip
-from utils import auth, table, table_err, upload_url
+from .utils import auth, table, table_err, upload_url
 
 
 class Upload(object):

@@ -3,7 +3,7 @@ import json
 from random import choice
 
 import requests
-from utils import auth, table, table_err, upload_history_url
+from .utils import auth, table, table_err, upload_history_url
 
 
 class History(object):

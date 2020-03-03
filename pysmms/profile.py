@@ -1,7 +1,7 @@
 import json
 
 import requests
-from utils import auth, table, profile_url
+from .utils import auth, table, profile_url
 
 
 class Profile(object):
