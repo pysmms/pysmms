@@ -1,11 +1,11 @@
 import os
 import sys
 
-from upload import Upload
-from profile import Profile
-from ip_history import IPHistory
-from history import History
-from help import help
+from .upload import Upload
+from .profile import Profile
+from .ip_history import IPHistory
+from .history import History
+from .help import help
 
 
 def app():
