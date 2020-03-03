@@ -30,9 +30,13 @@ def app():
         for r in result:
             print(r)
         sys.exit()
-    elif sys.argv[1] == "history":
+    elif sys.argv[1] == "history" and len(sys.argv) == 2:
         history = History()
         result = history.get_upload_history()
+        sys.exit(result)
+    elif sys.argv[1] == "history" and len(sys.argv) > 2:
+        history = History()
+        result = history.get_upload_history(sys.argv[2])
         sys.exit(result)
     elif sys.argv[1] == "ip_history":
         ip_history = IPHistory()

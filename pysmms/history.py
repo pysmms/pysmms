@@ -1,6 +1,6 @@
+import sys
 import time
 import json
-from random import choice
 
 import requests
 from .utils import auth, table, table_err, upload_history_url
@@ -11,7 +11,7 @@ class History(object):
     __doc__ = "获取用户上传记录"
 
     def __init__(self):
-        self.auth = choice(auth()) if auth() else None
+        self.auth_list = auth() if auth() else None
         self.upload_history_url = upload_history_url
 
     @staticmethod
@@ -38,12 +38,21 @@ class History(object):
                 ["-", "-"]])
         return table(items=items[:-1], title="历史上传记录")
 
-    def get_upload_history(self):
+    def get_upload_history(self, auth=None):
         """
         /upload_history : 获取用户上传记录
         """
 
-        headers = {"Authorization": self.auth}
+        if not auth:
+            print("请选择需要查询的账号：\n")
+            for i, _auth in enumerate(self.auth_list):
+                print("{}.  ".format(i+1) + _auth)
+            sys.exit("\n使用方法：pysmms history <Authorization>")
+
+        if auth not in self.auth_list:
+            sys.exit("您的输入有误！请核对 Authorization！")
+
+        headers = {"Authorization": auth}
         doc = json.loads(requests.get(self.upload_history_url,
                                       headers=headers).text)
         if doc["success"]:
