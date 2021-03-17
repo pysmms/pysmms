@@ -1,13 +1,11 @@
 import setuptools
 
-
 with open("README.md", "r") as f:
     long_description = f.read()
 
-
 setuptools.setup(
     name="pysmms",
-    version="0.0.8",
+    version="0.0.9",
     author="Jianxun",
     author_email="i@lijianxun.top",
     description="The CLI Tool for SM.MS, based on API v2.",
@@ -20,14 +18,6 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    install_requires=[
-        "requests",
-        "pyperclip",
-        "terminaltables"
-    ],
-    entry_points={
-        'console_scripts': [
-            'pysmms=pysmms.pysmms:app',
-        ],
-    }
+    install_requires=["requests", "pyperclip", "terminaltables"],
+    entry_points={"console_scripts": ["pysmms=pysmms.pysmms:app", ]},
 )

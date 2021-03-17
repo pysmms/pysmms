@@ -1,14 +1,13 @@
 import os
-import json
 from random import choice
 
-import requests
 import pyperclip
+import requests
+
 from .utils import auth, table, table_err, upload_url
 
 
 class Upload(object):
-
     __doc__ = "上传图片"
 
     def __init__(self):
@@ -31,8 +30,14 @@ class Upload(object):
             ["删除", data["delete"]],
             ["备注", remark]
         ]
-        pyperclip.copy(img_url)
-        return table(items=items, title="上传成功")
+
+        try:
+            pyperclip.copy(img_url)
+        except pyperclip.PyperclipException:
+            print(
+                "您的系统不支持复制粘贴！\n尝试输入：\n\tsudo apt-get install -y xsel xclip  ")
+        finally:
+            return table(items=items, title="上传成功")
 
     def upload(self, img_path):
         """
@@ -42,11 +47,10 @@ class Upload(object):
         files = {"smfile": (os.path.basename(img_path), open(img_path, "rb"))}
         if self.auth:
             headers = {"Authorization": self.auth}
-            html = requests.post(self.upload_url,
-                                 headers=headers, files=files)
+            resp = requests.post(self.upload_url,
+                                 headers=headers, files=files).json()
         else:
-            html = requests.post(self.upload_url, files=files)
-        doc = json.loads(html.text)
-        if doc["success"]:
-            return self.format_upload(doc)
-        return table_err(doc)
+            resp = requests.post(self.upload_url, files=files).json()
+        if resp["success"]:
+            return self.format_upload(resp)
+        return table_err(resp)
