@@ -11,7 +11,7 @@ setuptools.setup(
     description="The CLI Tool for SM.MS, based on API v2.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pysmms/pysmms",git
+    url="https://github.com/pysmms/pysmms",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
