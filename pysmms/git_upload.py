@@ -60,7 +60,7 @@ class GitPic(object):
             "content": img_data
         })).json()
 
-        if html.get("download_url", None):
+        if html.get("content", None):
             url = "https://cdn.jsdelivr.net/gh/{user}/{repo}@{branch}/{filename}".format(
                 user=data["user"],
                 repo=data["repo"],
