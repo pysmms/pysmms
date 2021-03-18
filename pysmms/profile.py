@@ -1,3 +1,4 @@
+import sys
 import requests
 
 from .utils import auth, table, profile_url
@@ -6,7 +7,7 @@ from .utils import auth, table, profile_url
 class Profile(object):
 
     def __init__(self):
-        self.auth_list = auth() if auth() else None
+        self.auth_list = auth() if auth() else list()
         self.profile_url = profile_url
 
     @staticmethod

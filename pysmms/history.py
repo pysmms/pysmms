@@ -10,7 +10,7 @@ class History(object):
     __doc__ = "获取用户上传记录"
 
     def __init__(self):
-        self.auth_list = auth() if auth() else None
+        self.auth_list = auth() if auth() else list()
         self.upload_history_url = upload_history_url
 
     @staticmethod
