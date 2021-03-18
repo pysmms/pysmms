@@ -4,10 +4,12 @@
 
 借鉴 [n0vad3v/smv2](https://github.com/n0vad3v/smv2)，在其基础上添加了上传成功后自动拷贝图片链接到剪贴板，多账号随机上传等功能。
 
+**最新版已支持使用 github + jsdelivr 实现文件加速。**
+
 # 安装
 
 ```bash
-pip install pysmms
+python3 -m pip install -U pysmms
 ```
 
 # 使用
@@ -18,18 +20,28 @@ pip install pysmms
 ➜  ~ pysmms help
 pysmms {arg}
 
-   profile          查看用户资料（需要配置 Authorization）
-   ip_history       基于 IP 的临时上传历史记录
-   history          获取用户上传记录（需要配置 Authorization）
-   /path/to/picture 上传图片（需要配置 Authorization）
+   profile              查看用户资料（需要配置 Authorization）
+   ip_history           基于 IP 的临时上传历史记录
+   history              获取用户上传记录（需要配置 Authorization）
+   gh /path/to/picture  使用 GitHub 作为图床上传
+   /path/to/picture     上传图片
 
-上传图片不需要配置 Authorization，但不保证图片的使用时效。
+上传图片不强制配置 Authorization，但不保证图片的使用时效。
+支持格式：.jpeg, .jpg, .png, .gif, .bmp
 配置 Authorization 需要在用户根目录创建 .pysmms 文件，文件写入以下内容：
 
     [sm.ms]
     auth=['wKSlYH******z8eb8qSr']
 
 注意：auth 以列表存放，支持多个 auth 随机上传。
+===============================================================
+GitHub 配置如下：
+
+    [github]
+    user=<用户名>
+    repo=<仓库名>
+    branch=<分支>
+    token=<Personal access tokens>
 ```
 
 ## 上传图片
