@@ -31,6 +31,9 @@ class Profile(object):
         /profile : 获取用户个人资料
         """
 
+        if auth not in self.auth_list:
+            sys.exit("您的输入有误！请核对 Authorization！")
+
         result = list()
         for _auth in self.auth_list:
             headers = {"Authorization": _auth}

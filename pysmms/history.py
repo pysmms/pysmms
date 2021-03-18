@@ -46,14 +46,14 @@ class History(object):
         /upload_history : 获取用户上传记录
         """
 
+        if auth not in self.auth_list:
+            sys.exit("您的输入有误！请核对 Authorization！")
+
         if not _auth:
             print("请选择需要查询的账号：\n")
             for i, a in enumerate(self.auth_list):
                 print("{}.  ".format(i + 1) + a)
             sys.exit("\n使用方法：pysmms history <Authorization>")
-
-        if auth not in self.auth_list:
-            sys.exit("您的输入有误！请核对 Authorization！")
 
         headers = {"Authorization": auth}
         doc = requests.get(self.upload_history_url, headers=headers).json()
