@@ -34,7 +34,7 @@ def gh_table(items):
     生成表格
     """
 
-    table_instance = DoubleTable(items, "GitHub - 上传图片")
+    table_instance = DoubleTable(items, "GitHub - 上传文件")
     table_instance.inner_row_border = True
     return table_instance.table
 

@@ -34,8 +34,7 @@ class Upload(object):
         try:
             pyperclip.copy(img_url)
         except pyperclip.PyperclipException:
-            print(
-                "您的系统不支持复制粘贴！\n尝试输入：\n\tsudo apt-get install -y xsel xclip  ")
+            print("您的系统不支持复制粘贴！请手动复制图片链接！")
         finally:
             return table(items=items, title="上传成功")
 

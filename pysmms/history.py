@@ -10,7 +10,7 @@ class History(object):
     __doc__ = "获取用户上传记录"
 
     def __init__(self):
-        self.auth_list = auth() if auth() else list()
+        self.auth_list = auth()
         self.upload_history_url = upload_history_url
 
     @staticmethod
@@ -46,7 +46,7 @@ class History(object):
         /upload_history : 获取用户上传记录
         """
 
-        if auth not in self.auth_list:
+        if not self.auth_list:
             sys.exit("您的输入有误！请核对 Authorization！")
 
         if not _auth:

@@ -7,7 +7,7 @@ from .utils import auth, table, profile_url
 class Profile(object):
 
     def __init__(self):
-        self.auth_list = auth() if auth() else list()
+        self.auth_list = auth()
         self.profile_url = profile_url
 
     @staticmethod
@@ -32,7 +32,7 @@ class Profile(object):
         /profile : 获取用户个人资料
         """
 
-        if auth not in self.auth_list:
+        if not self.auth_list:
             sys.exit("您的输入有误！请核对 Authorization！")
 
         result = list()
