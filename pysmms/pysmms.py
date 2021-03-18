@@ -21,7 +21,8 @@ def app():
     allowed_file_extensions = [".jpeg", ".jpg", ".png", ".gif", ".bmp"]
 
     if os.path.exists(sys.argv[1]):
-        if os.path.splitext(sys.argv[1])[1] not in allowed_file_extensions:
+        if os.path.splitext(
+                sys.argv[1])[1].lower() not in allowed_file_extensions:
             sys.exit("文件类型不支持！")
         up = Upload()
         result = up.upload(sys.argv[1])
@@ -51,9 +52,6 @@ def app():
 
     elif sys.argv[1] == "gh" and len(sys.argv) > 2:
         if os.path.exists(sys.argv[2]):
-            if os.path.splitext(
-                    sys.argv[2])[1].lower() not in allowed_file_extensions:
-                sys.exit("文件类型不支持！")
             git_up = GitPic()
             result = git_up.upload(sys.argv[2])
             sys.exit(result)

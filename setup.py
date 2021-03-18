@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name="pysmms",
-    version="0.1.0",
+    version="0.1.1",
     author="Jianxun",
     author_email="i@lijianxun.top",
     description="The CLI Tool for SM.MS, based on API v2.",
