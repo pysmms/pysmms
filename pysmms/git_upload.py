@@ -68,10 +68,7 @@ class GitPic(object):
                 filename=file_name)
             return self.format_upload({"filename": file_name, "url": url})
         elif html.get("message", None):
-            items = [
-                ["Error Message", html["message"]],
-                ["Documentation Url", html["documentation_url"]]
-            ]
+            items = [["Error Message", html["message"]]]
             gh_table(items)
         else:
             sys.exit("Error!")
